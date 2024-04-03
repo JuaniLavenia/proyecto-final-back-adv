@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
+app.use("/api", require("./routes/auth.routes"));
 
 module.exports = {
   app,
