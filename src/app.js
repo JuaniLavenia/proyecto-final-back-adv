@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 app.use("/api", require("./routes/auth.routes"));
+app.use("/api", require("./routes/user.routes"));
 
 module.exports = {
   app,
