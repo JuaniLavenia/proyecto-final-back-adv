@@ -1,13 +1,21 @@
 require("dotenv").config();
 
 const express = require("express");
+const logger = require("././loggers/logger");
 const app = express();
 
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("mongoose conectado"))
-  .catch((err) => console.log(err));
+  .then(() => logger.info("mongoose conectado"))
+  .catch((err) =>
+    logger.error("No se pudo conectar con la base de datos", err)
+  );
+
+const morgan = require("morgan");
+const winston = require("winston");
+
+app.use(morgan("combined", { stream: winston.stream }));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
