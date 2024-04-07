@@ -5,7 +5,7 @@ const {
   errorMidleware,
   requestValidation,
 } = require("../middlewares/common.middleware");
-
+const passport = require("passport");
 const router = express.Router();
 
 router.post("/login", login, errorMidleware);
@@ -30,6 +30,29 @@ router.post(
   requestValidation,
   register,
   errorMidleware
+);
+
+router.get("/login/github", passport.authenticate("github"));
+
+router.get(
+  "/login/github/callback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  (req, res) => {
+    res.redirect("/");
+  }
+);
+
+router.get(
+  "/login/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/login/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  (req, res) => {
+    res.redirect("/");
+  }
 );
 
 module.exports = router;
