@@ -1,5 +1,10 @@
 const Book = require("../models/Book");
 
+// Post
+const createBook = async (req, res) => {
+  // TO DO
+};
+
 // Gets
 const getBook = async (req, res) => {
   try {
@@ -24,6 +29,7 @@ const getAllBooks = async (req, res) => {
   }
 };
 
+// Put
 const updateBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
@@ -39,6 +45,7 @@ const updateBook = async (req, res) => {
   }
 };
 
+// Delete
 const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
