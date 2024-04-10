@@ -2,7 +2,25 @@ const Book = require("../models/Book");
 
 // Post
 const createBook = async (req, res) => {
-  // TO DO
+  try {
+    const { isbn, title, author, editorial } = req.body;
+    const allBooks = await Book.find();
+    let libroRepetido = allCodes.find(
+      (e) => e.isbn == isbn || (e.title == title && e.author == author)
+    );
+    if (libroRepetido) {
+      res.status(400).json({ message: "Libro ya existente" });
+    } else {
+      const book = new Book({
+        isbn,
+        title,
+        author,
+        editorial,
+      });
+      await book.save();
+      res.status(201).json({ message: "¡Libro Creado!" });
+    }
+  } catch (error) {}
 };
 
 // Gets
@@ -60,6 +78,7 @@ const deleteBook = async (req, res) => {
 };
 
 module.exports = {
+  createBook,
   getBook,
   getAllBooks,
   updateBook,
