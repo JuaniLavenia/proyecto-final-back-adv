@@ -6,8 +6,10 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("mongoose conectado"))
-  .catch((err) => console.log(err));
+  .then(() => logger.info("mongoose conectado"))
+  .catch((err) =>
+    logger.error("No se pudo conectar con la base de datos", err)
+  );
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
@@ -20,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
+app.use("/api", require("./routes/book.routes"));
 
 module.exports = {
   app,
