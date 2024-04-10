@@ -5,7 +5,7 @@ const createBook = async (req, res) => {
   try {
     const { isbn, title, author, editorial } = req.body;
     const allBooks = await Book.find();
-    let libroRepetido = allCodes.find(
+    let libroRepetido = allBooks.find(
       (e) => e.isbn == isbn || (e.title == title && e.author == author)
     );
     if (libroRepetido) {
@@ -20,7 +20,9 @@ const createBook = async (req, res) => {
       await book.save();
       res.status(201).json({ message: "¡Libro Creado!" });
     }
-  } catch (error) {}
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 };
 
 // Gets

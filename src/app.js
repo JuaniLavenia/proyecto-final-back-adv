@@ -6,9 +6,10 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => logger.info("mongoose conectado"))
-  .catch((err) =>
-    logger.error("No se pudo conectar con la base de datos", err)
+  .then(/* () => logger.info("mongoose conectado") */
+  console.log("conectado"))
+  .catch(/* (err) =>
+    logger.error("No se pudo conectar con la base de datos", err) */
   );
 
 app.use(express.urlencoded({ extended: false }));
