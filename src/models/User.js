@@ -13,11 +13,17 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
+    //required: true,
+  },
+  googleId: {
+    type: String,
+  },
+  githubId: {
+    type: String,
   },
   subscription: {
     type: String,
-    enum: ["Iron", "Gold", "Platinum"],
+    enum: ["Free", "Iron", "Gold", "Platinum"],
     default: "Free",
   },
   loanHistory: [
@@ -34,17 +40,19 @@ const userSchema = new Schema({
   ],
 });
 
-userSchema.pre("save", async function () {
-  try {
-    this.password = await bcrypt.hash(this.password, 12);
-  } catch (error) {
-    console.log(error);
-  }
-});
+if (this.password) {
+  userSchema.pre("save", async function () {
+    try {
+      this.password = await bcrypt.hash(this.password, 12);
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-userSchema.methods.comparePassword = async function (password) {
-  return await bcrypt.compare(password, this.password);
-};
+  userSchema.methods.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+  };
+}
 
 const User = model("User", userSchema);
 
