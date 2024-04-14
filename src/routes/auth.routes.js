@@ -32,14 +32,45 @@ router.post(
   errorMidleware
 );
 
-router.get("/login/github", passport.authenticate("github"));
+router.get("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        res.json({ data: null, error: "No se pudo cerrar la sesion" });
+      } else {
+        res.json({ data: "Cierre de sesion exitoso", error: null });
+      }
+    });
+  } else {
+    res.json({ data: null, error: "No hay una sesion activa" });
+  }
+});
+
+router.get("/login/github/failure", (req, res) =>
+  res.json({ data: null, error: "El inicio de sesion fallo - GITHUB" })
+);
+router.get("/login/github/success", (req, res) =>
+  res.json({ data: null, success: "El inicio de sesion fue exitoso - GITHUB" })
+);
+
+router.get(
+  "/login/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
 
 router.get(
   "/login/github/callback",
-  passport.authenticate("github", { failureRedirect: "/login" }),
-  (req, res) => {
-    res.redirect("/");
-  }
+  passport.authenticate("github", {
+    failureRedirect: "/api/login/github/failure",
+    successRedirect: "/api/login/github/success",
+  })
+);
+
+router.get("/login/google/failure", (req, res) =>
+  res.json({ data: null, error: "El inicio de sesion fallo - GOOGLE" })
+);
+router.get("/login/google/success", (req, res) =>
+  res.json({ data: null, success: "El inicio de sesion fue exitoso - GOOGLE" })
 );
 
 router.get(
@@ -49,10 +80,10 @@ router.get(
 
 router.get(
   "/login/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  (req, res) => {
-    res.redirect("/");
-  }
+  passport.authenticate("google", {
+    failureRedirect: "/api/login/google/failure",
+    successRedirect: "/api/login/google/success",
+  })
 );
 
 module.exports = router;

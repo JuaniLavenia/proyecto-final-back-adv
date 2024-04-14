@@ -1,66 +1,88 @@
-const passport = require("passport");
-const GitHubStrategy = require("passport-github").Strategy;
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GitHubStrategy = require("passport-github2");
+const GoogleStrategy = require("passport-google-oauth20");
 const User = require("../models/User");
 
-passport.serializeUser((user, done) => {
+const serializeUser = (user, done) => {
   done(null, user.id);
-});
+};
 
-passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user);
-  });
-});
+const deserializeUser = async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      googleId: user.googleId,
+      githubId: user.githubId,
+    });
+  } catch (error) {
+    done(error);
+  }
+};
 
-passport.use(
-  new GitHubStrategy(
-    {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/api/login/github/callback",
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        let user = await User.findOne({ email: profile.emails[0].value });
-        if (user) {
-          return done(null, user);
-        }
-        user = new User({
-          username: profile.username,
-          email: profile.emails[0].value,
+const githubStrategy = new GitHubStrategy(
+  {
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/api/login/github/callback",
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    try {
+      //console.log("PROFILE: ", profile);
+      const exist = await User.findOne({
+        where: { email: profile.emails[0].value },
+      });
+
+      if (exist && exist.googleId)
+        return done(null, false, {
+          message: "Ya tiene una cuenta con otro servicio",
         });
-        await user.save();
-        done(null, user);
-      } catch (error) {
-        done(error);
-      }
+      if (exist && exist.githubId) return done(null, exist);
+
+      const user = await User.create({
+        email: profile.emails[0].value,
+        username: profile.username,
+        githubId: profile.id,
+      });
+
+      done(null, user);
+    } catch (err) {
+      console.log(err);
+      done(null, false, { message: "No se pudo iniciar sesion" });
     }
-  )
+  }
 );
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/api/login/google/callback",
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        let user = await User.findOne({ email: profile.emails[0].value });
-        if (user) {
-          return done(null, user);
-        }
-        user = new User({
-          username: profile.displayName,
-          email: profile.emails[0].value,
-        });
-        await user.save();
-        done(null, user);
-      } catch (error) {
-        done(error);
+const googleStrategy = new GoogleStrategy(
+  {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/api/login/google/callback",
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    try {
+      //console.log("PROFILE: ", profile);
+      let user = await User.findOne({ email: profile.emails[0].value });
+      if (user) {
+        return done(null, user);
       }
+      user = new User({
+        username: profile.displayName,
+        email: profile.emails[0].value,
+        googleId: profile.id,
+      });
+      await user.save();
+      done(null, user);
+    } catch (error) {
+      done(error);
     }
-  )
+  }
 );
+
+module.exports = {
+  serializeUser,
+  deserializeUser,
+  googleStrategy,
+  githubStrategy,
+};

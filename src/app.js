@@ -3,6 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const logger = require("././loggers/logger");
 const app = express();
+const session = require("express-session");
+const passport = require("passport");
+const {
+  serializeUser,
+  deserializeUser,
+  githubStrategy,
+  googleStrategy,
+} = require("./middlewares/passport.middleware");
 
 const mongoose = require("mongoose");
 mongoose
@@ -13,13 +21,44 @@ mongoose
   );
 
 const morgan = require("morgan");
-const winston = require("winston");
 
-app.use(morgan("combined", { stream: winston.stream }));
+app.use(
+  morgan(function (tokens, req, res) {
+    const logMessage = {
+      method: tokens.method(req, res),
+      url: tokens.url(req, res),
+      status: tokens.status(req, res),
+      rs: tokens["response-time"](req, res) + " ms",
+    };
+
+    logger.info({
+      message: JSON.stringify(logMessage),
+      date: new Date().toLocaleString(),
+    });
+    return JSON.stringify(logMessage);
+  })
+);
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET ?? "",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.json());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(googleStrategy);
+passport.use(githubStrategy);
+
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 const cors = require("cors");
 
