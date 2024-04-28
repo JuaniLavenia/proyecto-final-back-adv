@@ -1,5 +1,12 @@
 const express = require("express");
-const { login, register } = require("../controllers/auth.controller");
+const {
+  login,
+  register,
+  githubFailure,
+  githubSuccess,
+  googleFailure,
+  logout,
+} = require("../controllers/auth.controller");
 const { body } = require("express-validator");
 const {
   errorMidleware,
@@ -32,26 +39,10 @@ router.post(
   errorMidleware
 );
 
-router.get("/logout", (req, res) => {
-  if (req.session) {
-    req.session.destroy((err) => {
-      if (err) {
-        res.json({ data: null, error: "No se pudo cerrar la sesion" });
-      } else {
-        res.json({ data: "Cierre de sesion exitoso", error: null });
-      }
-    });
-  } else {
-    res.json({ data: null, error: "No hay una sesion activa" });
-  }
-});
+router.get("/logout", logout);
 
-router.get("/login/github/failure", (req, res) =>
-  res.json({ data: null, error: "El inicio de sesion fallo - GITHUB" })
-);
-router.get("/login/github/success", (req, res) =>
-  res.json({ data: null, success: "El inicio de sesion fue exitoso - GITHUB" })
-);
+router.get("/login/github/failure", githubFailure);
+router.get("/login/github/success", githubSuccess);
 
 router.get(
   "/login/github",
@@ -66,12 +57,8 @@ router.get(
   })
 );
 
-router.get("/login/google/failure", (req, res) =>
-  res.json({ data: null, error: "El inicio de sesion fallo - GOOGLE" })
-);
-router.get("/login/google/success", (req, res) =>
-  res.json({ data: null, success: "El inicio de sesion fue exitoso - GOOGLE" })
-);
+router.get("/login/google/failure", googleFailure);
+router.get("/login/google/success", githubSuccess);
 
 router.get(
   "/login/google",

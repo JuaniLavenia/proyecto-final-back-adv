@@ -48,8 +48,7 @@ const githubStrategy = new GitHubStrategy(
 
       done(null, user);
     } catch (err) {
-      console.log(err);
-      done(null, false, { message: "No se pudo iniciar sesion" });
+      done(null, false, { message: "No se pudo iniciar sesion con Github" });
     }
   }
 );
@@ -75,7 +74,7 @@ const googleStrategy = new GoogleStrategy(
       await user.save();
       done(null, user);
     } catch (error) {
-      done(error);
+      done(null, false, { message: "No se pudo iniciar sesion con Google" });
     }
   }
 );

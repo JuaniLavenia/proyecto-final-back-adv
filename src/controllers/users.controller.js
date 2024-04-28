@@ -1,3 +1,4 @@
+const logger = require("../loggers/logger");
 const User = require("../models/User");
 
 const getUserInfo = async (req, res) => {
@@ -13,7 +14,7 @@ const getUserInfo = async (req, res) => {
     }
     res.status(200).json({ message: "Info del usuario", usuario: user });
   } catch (error) {
-    console.error(error);
+    logger.error("Error al obtener el usuario", error);
     res.status(500).json({ message: "Error al obtener el usuario" });
   }
 };
@@ -26,7 +27,7 @@ const getUsers = async (req, res) => {
     );
     res.status(200).json({ message: "Lista de usuarios", usuarios: users });
   } catch (error) {
-    console.error(error);
+    logger.error("Error al obtener los usuarios", error);
     res.status(500).json({ message: "Error al obtener los usuarios" });
   }
 };
@@ -35,13 +36,20 @@ const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-    }).select({ email: 1, _id: 1, username: 1 });
+    });
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
-    res.status(200).json({ message: "Usuario modificado", usuario: user });
+    const selectedUser = user.toObject();
+    const { _id, email, username } = selectedUser;
+    res
+      .status(200)
+      .json({
+        message: "Usuario modificado",
+        usuario: { _id, email, username },
+      });
   } catch (error) {
-    console.error(error);
+    logger.error("Error al modificar el usuario", error);
     res.status(500).json({ message: "Error al modificar el usuario" });
   }
 };
@@ -54,7 +62,7 @@ const deleteUser = async (req, res) => {
     }
     res.status(200).json({ message: "Usuario eliminado correctamente" });
   } catch (error) {
-    console.error(error);
+    logger.error("Error al eliminar el usuario", error);
     res.status(500).json({ message: "Error al eliminar el usuario" });
   }
 };
@@ -85,8 +93,8 @@ const updateSubscription = async (req, res, next) => {
       message: "Suscripción actualizada exitosamente",
     });
   } catch (error) {
+    logger.error("Error al suscribirse", error);
     res.status(500).json({ message: "Error al suscribirse" });
-    next(error);
   }
 };
 
@@ -100,7 +108,10 @@ const getLoanHistory = async (req, res, next) => {
 
     res.status(200).json(user.loanHistory);
   } catch (error) {
-    next(error);
+    logger.error("Error obteniendo historial de préstamos", error);
+    res
+      .status(500)
+      .json({ message: "Error obteniendo historial de préstamos" });
   }
 };
 
@@ -114,7 +125,8 @@ const getPurchaseHistory = async (req, res, next) => {
 
     res.status(200).json(user.purchaseHistory);
   } catch (error) {
-    next(error);
+    logger.error("Error obteniendo historial de compras", error);
+    res.status(500).json({ message: "Error obteniendo historial de compras" });
   }
 };
 
