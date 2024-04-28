@@ -36,11 +36,18 @@ const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-    }).select({ email: 1, _id: 1, username: 1 });
+    });
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
-    res.status(200).json({ message: "Usuario modificado", usuario: user });
+    const selectedUser = user.toObject();
+    const { _id, email, username } = selectedUser;
+    res
+      .status(200)
+      .json({
+        message: "Usuario modificado",
+        usuario: { _id, email, username },
+      });
   } catch (error) {
     logger.error("Error al modificar el usuario", error);
     res.status(500).json({ message: "Error al modificar el usuario" });
