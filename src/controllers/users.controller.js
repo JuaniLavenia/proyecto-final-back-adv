@@ -15,7 +15,9 @@ const getUserInfo = async (req, res) => {
     res.status(200).json({ message: "Info del usuario", usuario: user });
   } catch (error) {
     logger.error("Error al obtener el usuario", error);
-    res.status(500).json({ message: "Error al obtener el usuario" });
+    res
+      .status(500)
+      .json({ message: "Error al obtener el usuario", error: error });
   }
 };
 
@@ -28,7 +30,9 @@ const getUsers = async (req, res) => {
     res.status(200).json({ message: "Lista de usuarios", usuarios: users });
   } catch (error) {
     logger.error("Error al obtener los usuarios", error);
-    res.status(500).json({ message: "Error al obtener los usuarios" });
+    res
+      .status(500)
+      .json({ message: "Error al obtener los usuarios", error: error });
   }
 };
 
@@ -42,15 +46,15 @@ const updateUser = async (req, res) => {
     }
     const selectedUser = user.toObject();
     const { _id, email, username } = selectedUser;
-    res
-      .status(200)
-      .json({
-        message: "Usuario modificado",
-        usuario: { _id, email, username },
-      });
+    res.status(200).json({
+      message: "Usuario modificado",
+      usuario: { _id, email, username },
+    });
   } catch (error) {
     logger.error("Error al modificar el usuario", error);
-    res.status(500).json({ message: "Error al modificar el usuario" });
+    res
+      .status(500)
+      .json({ message: "Error al modificar el usuario", error: error });
   }
 };
 
@@ -63,7 +67,9 @@ const deleteUser = async (req, res) => {
     res.status(200).json({ message: "Usuario eliminado correctamente" });
   } catch (error) {
     logger.error("Error al eliminar el usuario", error);
-    res.status(500).json({ message: "Error al eliminar el usuario" });
+    res
+      .status(500)
+      .json({ message: "Error al eliminar el usuario", error: error });
   }
 };
 
@@ -94,7 +100,7 @@ const updateSubscription = async (req, res, next) => {
     });
   } catch (error) {
     logger.error("Error al suscribirse", error);
-    res.status(500).json({ message: "Error al suscribirse" });
+    res.status(500).json({ message: "Error al suscribirse", error: error });
   }
 };
 
@@ -111,7 +117,10 @@ const getLoanHistory = async (req, res, next) => {
     logger.error("Error obteniendo historial de préstamos", error);
     res
       .status(500)
-      .json({ message: "Error obteniendo historial de préstamos" });
+      .json({
+        message: "Error obteniendo historial de préstamos",
+        error: error,
+      });
   }
 };
 
@@ -126,7 +135,9 @@ const getPurchaseHistory = async (req, res, next) => {
     res.status(200).json(user.purchaseHistory);
   } catch (error) {
     logger.error("Error obteniendo historial de compras", error);
-    res.status(500).json({ message: "Error obteniendo historial de compras" });
+    res
+      .status(500)
+      .json({ message: "Error obteniendo historial de compras", error: error });
   }
 };
 
