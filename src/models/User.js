@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { Schema, model } = require("mongoose");
+const logger = require("../loggers/logger");
 
 const userSchema = new Schema({
   username: { type: String },
@@ -40,19 +41,23 @@ const userSchema = new Schema({
   ],
 });
 
-if (this.password) {
-  userSchema.pre("save", async function () {
-    try {
+userSchema.pre("save", async function () {
+  try {
+    if (this.password) {
       this.password = await bcrypt.hash(this.password, 12);
-    } catch (error) {
-      console.log(error);
     }
-  });
+  } catch (error) {
+    logger.error(error);
+  }
+});
 
-  userSchema.methods.comparePassword = async function (password) {
+userSchema.methods.comparePassword = async function (password) {
+  if (this.password) {
     return await bcrypt.compare(password, this.password);
-  };
-}
+  } else {
+    return;
+  }
+};
 
 const User = model("User", userSchema);
 

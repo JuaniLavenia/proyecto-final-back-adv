@@ -27,7 +27,7 @@ const login = async (req, res) => {
     res.json({ login: true, userId: user.id, token });
   } catch (error) {
     logger.error("Error al iniciar sesion", error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ message: "Error al iniciar sesion" });
   }
 };
 
@@ -52,7 +52,7 @@ const register = async (req, res) => {
     res.json({ register: true, userId: user.id });
   } catch (error) {
     logger.error("Error al registrarse", error);
-    res.status(500).json({ error });
+    res.status(500).json({ message: "Error al registrarse" });
   }
 };
 
