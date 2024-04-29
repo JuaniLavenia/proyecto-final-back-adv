@@ -12,9 +12,14 @@ const {
   googleStrategy,
 } = require("./middlewares/passport.middleware");
 
+const NODE_ENV = process.env.NODE_ENV;
+
+const connectionString =
+  NODE_ENV === "test" ? process.env.MONGODB_URI_TEST : process.env.MONGODB_URI;
+
 const mongoose = require("mongoose");
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(connectionString)
   .then(() => logger.info("mongoose conectado"))
   .catch((err) =>
     logger.error("No se pudo conectar con la base de datos", err)
@@ -70,6 +75,4 @@ app.use(cors());
 app.use("/api", require("./routes/auth.routes"));
 app.use("/api", require("./routes/user.routes"));
 
-module.exports = {
-  app,
-};
+module.exports = app;
