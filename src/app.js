@@ -14,12 +14,14 @@ mongoose
 
 const morgan = require("morgan");
 const winston = require("winston");
+const paymentRoutes = require('./routes/payments.routes');
 
 app.use(morgan("combined", { stream: winston.stream }));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.json());
+app.use(paymentRoutes);
 
 const cors = require("cors");
 
