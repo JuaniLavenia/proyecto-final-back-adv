@@ -3,7 +3,7 @@ const Book = require("../models/Book");
 // Post
 const createBook = async (req, res) => {
   try {
-    const { isbn, title, author, editorial } = req.body;
+    const { isbn, title, author, editorial, price, stock } = req.body;
     const allBooks = await Book.find();
     let libroRepetido = allBooks.find(
       (e) => e.isbn == isbn || (e.title == title && e.author == author)
@@ -16,6 +16,8 @@ const createBook = async (req, res) => {
         title,
         author,
         editorial,
+        price,
+        stock,
       });
       await book.save();
       res.status(201).json({ message: "¡Libro Creado!" });
@@ -41,7 +43,19 @@ const getBook = async (req, res) => {
 
 const getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find();
+    const books = await Book.find(
+      {},
+      {
+        isbn: 1,
+        title: 1,
+        author: 1,
+        price: 1,
+        stock: 1,
+        editorial: 1,
+        activeLoans: 1,
+        loanHistory: 1,
+      }
+    );
     res.status(200).json({ message: "Lista de libros", libros: books });
   } catch (error) {
     console.error(error);
