@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema({
     book: {
@@ -10,13 +10,8 @@ const itemSchema = new Schema({
         type: Number,
         default: 1,
         min: 1
-    },
-    stock: {
-        type: Number,
-        default: 0,
-        min: 0
     }
-})
+});
 
 const loanSchema = new Schema({
     books: {
@@ -34,14 +29,19 @@ const loanSchema = new Schema({
     expireTime: {
         type: Date,
         default: () => {
-            const endDate = new Date()
-            endDate.setDate(endDate.getDate() + 14)
-            endDate.setHours(23, 59, 0, 0)
-            return endDate
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 14);
+            endDate.setHours(23, 59, 0, 0);
+            return endDate;
         }
+    },
+    status: {
+        type: String,
+        enum: ['PREPARING', 'CONFIRMED' ,'FINISHED'],
+        default: 'PREPARING'
     }
-})
+});
 
-const Loan = model('Loan', loanSchema)
+const Loan = model('Loan', loanSchema);
 
-module.exports = Loan
+module.exports = Loan;

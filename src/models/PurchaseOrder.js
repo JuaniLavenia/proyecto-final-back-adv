@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema({
     book: {
@@ -10,13 +10,8 @@ const itemSchema = new Schema({
         type: Number,
         default: 1,
         min: 1
-    },
-    stock: {
-        type: Number,
-        default: 0,
-        min: 0
     }
-})
+});
 
 const purchaseOrderSchema = new Schema({
     books: {
@@ -29,11 +24,11 @@ const purchaseOrderSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ['PREPARING', 'BUYED', 'DISPATCHED', 'SHIPPED', 'FINISHED'],
+        enum: ['PREPARING', 'BUYED', 'SHIPED', 'FINISHED'],
         default: 'PREPARING'
     }
-})
+});
 
-const PurchaseOrder = model('PurchaseOrder', purchaseOrderSchema)
+const PurchaseOrder = model('PurchaseOrder', purchaseOrderSchema);
 
-module.exports = PurchaseOrder
+module.exports = PurchaseOrder;
