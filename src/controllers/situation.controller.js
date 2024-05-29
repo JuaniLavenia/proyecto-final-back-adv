@@ -4,11 +4,10 @@ const PurchaseOrder = require('../models/PurchaseOrder');
 const Book = require('../models/Book');
 
 
-
 const createLoan = async (req, res, next) => {
     try {
-        const { userId, bookId, quantity, book } = req.body;
-        if (!book) return res.status(400).json({ message: 'El libro no existe' });
+        const { userId, bookId, quantity } = req.body;
+        if (!bookId) return res.status(400).json({ message: 'El libro no existe' });
 
         const loan = new Loan({ user: userId, books: [{ book: bookId, quantity }] });
         await loan.save();
@@ -64,13 +63,14 @@ const getLoans = async (req, res) => {
 
 const createPurchaseOrder = async (req, res, next) => {
     try {
-        const { userId, bookId, quantity, book } = req.body;
-        if (!book) return res.status(400).json({ message: 'El libro no existe' });
+        const { userId, bookId, quantity } = req.body;
+        if (!bookId) return res.status(400).json({ message: 'El libro no existe' });
 
         const purchaseOrder = new PurchaseOrder({ user: userId, books: [{ book: bookId, quantity }] });
         await purchaseOrder.save();
 
         res.status(201).json({ data: purchaseOrder, error: [] });
+        
 
     } catch (err) {
         next(err);
