@@ -1,7 +1,6 @@
-require("dotenv").config();
-
-const express = require("express");
-const logger = require("././loggers/logger");
+require('dotenv').config();
+const express = require('express');
+const logger = require('././loggers/logger');
 const app = express();
 const session = require("express-session");
 const passport = require("passport");
@@ -16,8 +15,9 @@ const NODE_ENV = process.env.NODE_ENV;
 
 const connectionString =
   NODE_ENV === "test" ? process.env.MONGODB_URI_TEST : process.env.MONGODB_URI;
+const path = require('path');
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 mongoose
   .connect(connectionString)
   .then(() => logger.info("mongoose conectado"))
@@ -53,7 +53,7 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
+app.use(express.static('public'));
 app.use(express.json());
 
 app.use(passport.initialize());
@@ -65,14 +65,20 @@ passport.use(githubStrategy);
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-const cors = require("cors");
 
-app.get("/", (req, res) => {
-  res.send("Bienvenido");
+const cors = require('cors');
+
+app.get('/', (req, res) => {
+    res.send('Bienvenido');
 });
 
+
 app.use(cors());
-app.use("/api", require("./routes/auth.routes"));
-app.use("/api", require("./routes/user.routes"));
+app.use('/api', require('./routes/auth.routes'));
+app.use('/api', require('./routes/user.routes'));
+app.use('/api', require('./routes/situation.routes'));
+app.use('/api',require('./routes/payment.routes'));
+app.use(express.static(path.resolve('src/public')));
+
 
 module.exports = app;
