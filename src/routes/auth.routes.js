@@ -1,11 +1,18 @@
 const express = require("express");
-const { login, register } = require("../controllers/auth.controller");
+const {
+  login,
+  register,
+  githubFailure,
+  githubSuccess,
+  googleFailure,
+  logout,
+} = require("../controllers/auth.controller");
 const { body } = require("express-validator");
 const {
   errorMidleware,
   requestValidation,
 } = require("../middlewares/common.middleware");
-
+const passport = require("passport");
 const router = express.Router();
 
 router.post("/login", login, errorMidleware);
@@ -30,6 +37,40 @@ router.post(
   requestValidation,
   register,
   errorMidleware
+);
+
+router.get("/logout", logout);
+
+router.get("/login/github/failure", githubFailure);
+router.get("/login/github/success", githubSuccess);
+
+router.get(
+  "/login/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
+
+router.get(
+  "/login/github/callback",
+  passport.authenticate("github", {
+    failureRedirect: "/api/login/github/failure",
+    successRedirect: "/api/login/github/success",
+  })
+);
+
+router.get("/login/google/failure", googleFailure);
+router.get("/login/google/success", githubSuccess);
+
+router.get(
+  "/login/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/login/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/api/login/google/failure",
+    successRedirect: "/api/login/google/success",
+  })
 );
 
 module.exports = router;

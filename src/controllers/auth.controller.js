@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const logger = require("../loggers/logger");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -25,7 +26,8 @@ const login = async (req, res) => {
 
     res.json({ login: true, userId: user.id, token });
   } catch (error) {
-    res.status(500).json({ error: "Server error" });
+    logger.error("Error al iniciar sesion", error);
+    res.status(500).json({ message: "Error al iniciar sesion" });
   }
 };
 
@@ -49,11 +51,47 @@ const register = async (req, res) => {
 
     res.json({ register: true, userId: user.id });
   } catch (error) {
-    res.status(500).json({ error });
+    logger.error("Error al registrarse", error);
+    res.status(500).json({ message: "Error al registrarse" });
   }
+};
+
+const logout = (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        res.json({ data: null, error: "No se pudo cerrar la sesion" });
+      } else {
+        res.json({ data: "Cierre de sesion exitoso", error: null });
+      }
+    });
+  } else {
+    res.json({ data: null, error: "No hay una sesion activa" });
+  }
+};
+
+const googleFailure = (req, res) => {
+  res.json({ data: null, error: "El inicio de sesion fallo - GOOGLE" });
+};
+
+const githubFailure = (req, res) => {
+  res.json({ data: null, error: "El inicio de sesion fallo - GITHUB" });
+};
+
+const googleSuccess = (req, res) => {
+  res.json({ data: null, success: "El inicio de sesion fue exitoso - GOOGLE" });
+};
+
+const githubSuccess = (req, res) => {
+  res.json({ data: null, success: "El inicio de sesion fue exitoso - GITHUB" });
 };
 
 module.exports = {
   login,
   register,
+  logout,
+  googleFailure,
+  googleSuccess,
+  githubFailure,
+  githubSuccess,
 };
