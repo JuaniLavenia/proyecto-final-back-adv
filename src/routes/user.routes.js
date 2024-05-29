@@ -9,17 +9,18 @@ const {
   getLoanHistory,
   getPurchaseHistory,
 } = require("../controllers/users.controller");
+const authMiddleware = require("../middlewares/auth.middleware");
 
-router.get("/users", getUsers);
-router.get("/user/:id", getUserInfo);
+router.get("/users", authMiddleware, getUsers);
+router.get("/user/:id", authMiddleware, getUserInfo);
 
-router.put("/user/:id", updateUser);
-router.put("/user/:id/subscription", updateSubscription);
+router.put("/user/:id", authMiddleware, updateUser);
+router.put("/user/:id/subscription", authMiddleware, updateSubscription);
 
-router.delete("/user/:id", deleteUser);
+router.delete("/user/:id", authMiddleware, deleteUser);
 
-router.get("/user/:id/loan-history", getLoanHistory);
+router.get("/user/:id/loan-history", authMiddleware, getLoanHistory);
 
-router.get("/user/:id/purchase-history", getPurchaseHistory);
+router.get("/user/:id/purchase-history", authMiddleware, getPurchaseHistory);
 
 module.exports = router;

@@ -25,7 +25,8 @@ const githubStrategy = new GitHubStrategy(
   {
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/api/login/github/callback",
+    callbackURL:
+      "https://proyecto-final-back-adv.onrender.com/api/login/github/callback",
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
@@ -57,7 +58,8 @@ const googleStrategy = new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/api/login/google/callback",
+    callbackURL:
+      "https://proyecto-final-back-adv.onrender.com/api/login/google/callback",
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
