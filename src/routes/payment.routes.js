@@ -1,11 +1,13 @@
 const { Router } = require('express');
-const { payment } = require('../controllers/payment.controller');
- 
+const { createOrder, findPayment, handleWebhook } = require('../controllers/payment.controller');
+
 const router = Router();
 
-router.post('/payment', payment);
-router.post('/webhook', (req, res) => res.json({ message: 'Aqui recibimos comuniaciones desde mercado pago' }));
-router.get('/success', (req, res) => res.send('caso de compra exitosa'));
-router.get('/failure', (req, res) => res.send('caso de compra fallida'));
+router.get('/payment', findPayment);
+router.post('/create-order', createOrder);
+router.post('/webhook', handleWebhook);
+router.get('/success', (req, res) => res.send('Caso de compra exitosa'));
+router.get('/failure', (req, res) => res.send('Caso de compra fallida'));
+router.get('/pending', (req, res) => res.send('Caso de compra pendiente'));
 
-module.exports=router;
+module.exports = router;
