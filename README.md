@@ -35,7 +35,15 @@ Para correr este proyecto, es necesario añadir las siguientes variables de ento
 `GOOGLE_CLIENT_ID`
 `GOOGLE_CLIENT_SECRET`
 
-## Running Tests
+## Iniciar el proyecto
+
+Para iniciar el proyecto, ejecutar el siguiente comando:
+
+```bash
+  npm run dev
+```
+
+## Correr Tests
 
 Para correr los tests, ejecutar el siguiente comando:
 
@@ -60,6 +68,26 @@ Para correr los tests, ejecutar el siguiente comando:
   que haya vendido y los que esten alquilados. Asi mismo podra poner una fecha limite
   para la devolucion de los libros alquilados, y si el cliente no lo devuelve en ese plazo
   se le cobraran intereses.
+
+## Prueba integracion mercadoPago
+
+- A modo de prueba se agrego un pequeño front, que podra iniciar localmente para probar la 
+integracion con mercadoPago. Para ello, debe estar posicionado en la carpeta principal y se 
+debe ejecutar los siguientes comandos:
+
+```bash
+  cd miniFornt/
+```
+Luego:
+
+```bash
+  npm i
+```
+Una vez instalados los node modules:
+
+```bash
+  npm run dev
+```
 
 ## Tecnologias utilizadas
 

@@ -46,7 +46,7 @@ function Home() {
       body: raw,
     };
 
-    fetch("http://localhost:7070/create-order", requestOptions)
+    fetch("https://proyecto-final-back-adv.onrender.com/api/create-order", requestOptions)
       .then(response => {
         if (response.status < 300) return response.json()
       })

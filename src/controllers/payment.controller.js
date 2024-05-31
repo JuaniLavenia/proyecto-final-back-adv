@@ -52,9 +52,9 @@ const createOrder = async (req, res) => {
         ],
         notification_url: "https://1zwgjv94-7070.brs.devtunnels.ms/webhook",
         back_urls: {
-          success: "http://localhost:5174/success",
-          pending: "http://localhost:5174/pending",
-          failure: "http://localhost:5174/failure",
+          success: "http://localhost:5173/success",
+          pending: "http://localhost:5173/pending",
+          failure: "http://localhost:5173/failure",
         },
       },
     });
