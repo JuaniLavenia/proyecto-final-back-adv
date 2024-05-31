@@ -1,45 +1,115 @@
-const mercadopago = require("mercadopago");
+const { Preference } = require("mercadopago");
+const { MercadoPagoConfig, Payment, PaymentMethod } = require("mercadopago");
+const Payments = require("../models/Payments");
 
-const payment = async (req, res) => {
-  await mercadopago.configure({
-    access_token: process.env.MERCADOPAGO_KEY,
-  });
-  const result = await mercadopago.preferences.create({
-    items: [
-      {
-        title: "Laptop",
-        unit_price: 5000,
-        currency_id: "ARS",
-        quantity: 1,
-      },
-    ],
-    notification_url: "https://1zwgjv94-7070.brs.devtunnels.ms/webhook",
-    back_urls: {
-      success: "http://localhost:3000/vuelta-success.html",
-      pending: "http://localhost:3000/vuelta-pending.html",
-      failure: "http://localhost:3000/vuelta-failure.html",
-    },
-  });
+const client = new MercadoPagoConfig({
+  accessToken: process.env.MERCADOPAGO_KEY,
+});
 
-  res.json(result);
+const listPaymentMethods = async (req, res) => {
+  const paymentMethod = new PaymentMethod(client);
+
+  const data = await paymentMethod.get();
+
+  res.json({ data, errors: [] });
 };
 
-const manejarFin = async (req, res) => {
-  mercadopago.configure({
-    access_token:
-      "TEST-3046566279301127-051110-c61a7b70dc142661d9a7f0d056ccd73f-159062169",
-  });
+const findPayment = async (req, res) => {
+  const { id } = req.query;
 
-  if (req.query.topic === "merchant_order") {
-    const data = await mercadopago.merchant_orders.findById(req.query.id);
+  try {
+    const payment = new Payment(client);
 
-    console.log(data);
+    const data = await payment.get({ id });
+
+    const paymentEntity = await Payments.findbyId(id);
+
+    res.json({
+      data: {
+        paymentEntity,
+        payment: data,
+      },
+      errors: [],
+    });
+  } catch (error) {
+    res.json({ data: null, errors: [error] });
   }
+};
 
-  res.status(204);
+const createOrder = async (req, res) => {
+  const preference = new Preference(client);
+
+  try {
+    const data = await preference.create({
+      body: {
+        items: [
+          {
+            id: 25,
+            quantity: 1,
+            title: "Cliente nuevo",
+            unit_price: req.body.price,
+          },
+        ],
+        notification_url: "https://1zwgjv94-7070.brs.devtunnels.ms/webhook",
+        back_urls: {
+          success: "http://localhost:5174/success",
+          pending: "http://localhost:5174/pending",
+          failure: "http://localhost:5174/failure",
+        },
+      },
+    });
+
+    res.json({ data, errors: [] });
+  } catch (err) {
+    res.json({ data: null, errors: [err] });
+  }
+};
+
+const handleWebhook = async (req, res) => {
+  if (req.query.type === "payment") {
+    try {
+      const payment = new Payment(client);
+
+      const data = await payment.get({ id: req.query["data.id"] });
+
+      const {
+        id: paymentId,
+        transaction_details: {
+          total_paid_amount: price,
+          net_received_amount: netPrice,
+        },
+        description,
+        currency_id: currency,
+        installments,
+        payment_method: { type: paymentMethod },
+      } = data;
+
+      const fee = price - netPrice;
+
+      await Payments.findAndUpdate({
+        where: { id: paymentId },
+        defaults: {
+          title: description,
+          description,
+          price,
+          netPrice,
+          fee: +fee.toFixed(2),
+          feePercentage: +((fee * 100) / price).toFixed(2),
+          currency,
+          installments,
+          paymentMethod,
+        },
+      });
+    } catch (error) {
+      error;
+    }
+  }
+  res.status(204).send();
 };
 
 module.exports = {
-  payment,
-  manejarFin,
+  createOrder,
+  listPaymentMethods,
+  findPayment,
+  handleWebhook,
 };
