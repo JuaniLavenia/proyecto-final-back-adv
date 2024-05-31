@@ -1,7 +1,9 @@
 # BIBLIOTECA RC
 
 Proyecto final del curso Especializacion en Backend con node.js.
-Se trata de un sistema para una Biblioteca, donde el cliente puede administrar sus libros y puede ofrecer la venta y alquiler de los mismos, asi como tambien los usuarios podran registrarse para realizar las transacciones de los libros.
+Se trata de un sistema para una Biblioteca, donde el cliente puede administrar sus libros
+y puede ofrecer la venta y alquiler de los mismos, asi como tambien los usuarios podran
+registrarse para realizar las transacciones de los libros.
 
 ## Instalación
 
@@ -48,6 +50,16 @@ Para correr los tests, ejecutar el siguiente comando:
 - Autenticacion de usuarios (Login y Registro)
 - Estrategias de logeo/registro con Google y Github
 - Compra y Alquiler de libros (Utilizando transacciones)
+
+## Funcionamiento
+
+- La idea de este sistema es que un usuario se pueda registrar en la Biblioteca y
+  pueda comprar o alquilar libros, y luego pueda consultar por los libros que haya
+  adquirido o alquilado.
+- Del lado del propietario de la Biblioteca, este podra consultar por los libros
+  que haya vendido y los que esten alquilados. Asi mismo podra poner una fecha limite
+  para la devolucion de los libros alquilados, y si el cliente no lo devuelve en ese plazo
+  se le cobraran intereses.
 
 ## Tecnologias utilizadas
 
