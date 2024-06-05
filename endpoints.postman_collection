@@ -1,0 +1,2901 @@
+{
+	"info": {
+		"_postman_id": "1418db6d-43fc-4f6a-962a-1658fb1fe719",
+		"name": "BIBLIOTECA ROLLING",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26744631"
+	},
+	"item": [
+		{
+			"name": "Gestion de Biblioteca",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Get Users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/users",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Users",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/users",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:48:04 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "270"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebcfc28a419c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f7-L0WN1F+buOy3Rgx1NDbaNh4ktsQ\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "4b69270f-738d-481f"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Lista de usuarios\",\n    \"usuarios\": [\n        {\n            \"_id\": \"660c9b39c2febb57b22c937b\",\n            \"username\": \"TestUpdate1\",\n            \"email\": \"usertest1@test.com\",\n            \"subscription\": \"Platinum\"\n        },\n        {\n            \"_id\": \"661c6167313bb15aeb545205\",\n            \"username\": \"Juan Ignacio Lavenia (Juani)\",\n            \"email\": \"juanilavenia34@gmail.com\",\n            \"subscription\": \"Free\"\n        },\n        {\n            \"_id\": \"66301ac9de70e6c09a38ac9d\",\n            \"username\": \"Test2\",\n            \"email\": \"usertest2@test.com\",\n            \"subscription\": \"Free\"\n        },\n        {\n            \"_id\": \"66301f724013c5a835660fb3\",\n            \"username\": \"Test3\",\n            \"email\": \"usertest3@test.com\",\n            \"subscription\": \"Free\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get User Info",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66301f724013c5a835660fb3"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get User Info",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "66301f724013c5a835660fb3"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:48:19 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "142"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd024dd919c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"91-Eg85aS6bQhWCVfpwr1AIDsQmkeA\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "f9e34886-33a4-4bc6"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Info del usuario\",\n    \"usuario\": {\n        \"_id\": \"66301f724013c5a835660fb3\",\n        \"username\": \"Test3\",\n        \"email\": \"usertest3@test.com\",\n        \"subscription\": \"Free\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"TestUpdate1\",\r\n    \"email\": \"userTest3@test.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66301f724013c5a835660fb3"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update User",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"TestUpdate1\",\r\n    \"email\": \"userTest3@test.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "66301f724013c5a835660fb3"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:48:40 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd0a88a969c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"83-laWdIkMUndrsnAZKWHOQscgVkxg\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "9f0e2912-a21c-4613"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Usuario modificado\",\n    \"usuario\": {\n        \"_id\": \"66301f724013c5a835660fb3\",\n        \"email\": \"usertest3@test.com\",\n        \"username\": \"TestUpdate1\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66301ac9de70e6c09a38ac9d"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete User",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "66301ac9de70e6c09a38ac9d"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:49:11 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "69"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd1666a489c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2d-IMdTHBRHZY/xf+tv+uRlHvlmx7E\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "c61ec7e7-7d93-47ed"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Usuario eliminado correctamente\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Suscription",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subscription\": \"Platinum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id/subscription",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										":id",
+										"subscription"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66301f724013c5a835660fb3"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Suscription",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"subscription\": \"Platinum\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id/subscription",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"user",
+												":id",
+												"subscription"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "66301f724013c5a835660fb3"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:49:48 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "75"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd24f6cc89c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"33-JNwBjCPmv379sjCE22lmLJV7ymg\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "e2ef03ad-7b58-4500"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Suscripción actualizada exitosamente\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Loans",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id/loan-history",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										":id",
+										"loan-history"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "660c9b39c2febb57b22c937b"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Loans",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id/loan-history",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"user",
+												":id",
+												"loan-history"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "660c9b39c2febb57b22c937b"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:50:10 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "105"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd2d598ae9c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"54-wORx6hvpmdPF374Mt+D9luhBoKE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "57ebec5f-a11e-4fe6"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"bookId\": null,\n        \"_id\": \"660ca16df6559ed03a821be6\",\n        \"date\": \"2024-04-03T00:23:09.059Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Get Purchases",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id/purchase-history",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"user",
+										":id",
+										"purchase-history"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "660c9b39c2febb57b22c937b"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Purchases",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/user/:id/purchase-history",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"user",
+												":id",
+												"purchase-history"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "660c9b39c2febb57b22c937b"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:52:32 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "127"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd64d99b69c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"a7-CoVas0b2kW9vaKN0Gtq4ad8L1Ks\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "09efcd67-36bf-422b"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"bookId\": null,\n        \"_id\": \"660ca1c2f6559ed03a821bea\",\n        \"date\": \"2024-04-03T00:24:34.902Z\"\n    },\n    {\n        \"bookId\": null,\n        \"_id\": \"660ca1eef6559ed03a821bef\",\n        \"date\": \"2024-04-03T00:25:18.540Z\"\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"userTest3@test.com\",\r\n    \"password\": \"Qwer1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/login",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"userTest3@test.com\",\r\n    \"password\": \"Qwer1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/login",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:47:42 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "231"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebcf2d1c209c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e9-SPD4vEBkmjUdwYrqyBxXZV2ocXc\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "0cd62f7a-4f9e-4d88"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"login\": true,\n    \"userId\": \"66301f724013c5a835660fb3\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMwMWY3MjQwMTNjNWE4MzU2NjBmYjMiLCJpYXQiOjE3MTc1NDQ4NjIsImV4cCI6MTcxNzU0ODQ2Mn0.S_9lF6jYzOIK8VYW3Cge5v6mFsfkGqlaLX9nIbZNgEU\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Logout",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"userTest3@test.com\",\r\n    \"password\": \"Qwer1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/logout",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Logout",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"userTest3@test.com\",\r\n    \"password\": \"Qwer1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/logout",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:54:41 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "72"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebd978983a9c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"30-BN7XAgh8ro3lrU1b2fLLk3nDw1Q\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "69ad5b48-3721-4ff1"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": \"Cierre de sesion exitoso\",\n    \"error\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Test4\",\r\n    \"email\": \"userTest4@test.com\",\r\n    \"password\": \"Qwer1234\",\r\n    \"password_confirmation\": \"Qwer1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/register",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"username\": \"Test4\",\r\n    \"email\": \"userTest4@test.com\",\r\n    \"password\": \"Qwer1234\",\r\n    \"password_confirmation\": \"Qwer1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/register",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"register"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:55:22 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "77"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebda6919169c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-FDdh25aZziyZ6ZT6oczBeen2z1A\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "9c4eff68-7759-4afa"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"register\": true,\n    \"userId\": \"665fa9674d6b5b3695402695\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Situations",
+					"item": [
+						{
+							"name": "Get Loans",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/loans",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"loans"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Loans",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/loans",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"loans"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:55:51 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "243"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebdb2d59ba9c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"137-LMN4LnFmQH43JTdmZUqUYAU4Qds\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "b881d57a-0f10-4578"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Lista de prestamos\",\n    \"data\": [\n        {\n            \"_id\": \"6655393f3959b900768e3607\",\n            \"books\": [\n                {\n                    \"book\": \"6653d38b71e4db9bfbf692bf\",\n                    \"quantity\": 30,\n                    \"_id\": \"6655393f3959b900768e3608\"\n                }\n            ],\n            \"user\": \"661c6167313bb15aeb545205\",\n            \"status\": \"PREPARING\",\n            \"startDate\": \"2024-05-28T01:54:07.684Z\",\n            \"expireTime\": \"2024-06-11T02:59:00.000Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Loan",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\",\r\n    \"bookId\": \"66543015cb820e0ffd6c4b52\",\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/create-loan",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"create-loan"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create Loan",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\",\r\n    \"bookId\": \"6654287a799ca3d1720b7763\",\r\n    \"quantity\": 10\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/create-loan",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"create-loan"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Jun 2024 23:59:10 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "212"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebe00afcae9c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"121-isXh3MkRhBeCuZ+G3L3//yTkVoE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "06e2a20d-1299-45c9"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"books\": [\n            {\n                \"book\": \"6654287a799ca3d1720b7763\",\n                \"quantity\": 10,\n                \"_id\": \"665faa4e4d6b5b369540269c\"\n            }\n        ],\n        \"user\": \"665fa9674d6b5b3695402695\",\n        \"status\": \"PREPARING\",\n        \"_id\": \"665faa4e4d6b5b369540269b\",\n        \"startDate\": \"2024-06-04T23:59:10.694Z\",\n        \"expireTime\": \"2024-06-18T23:59:00.000Z\",\n        \"__v\": 0\n    },\n    \"error\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Confirm Loan",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/confirm-loan",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"confirm-loan"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Confirm Loan",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/confirm-loan",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"confirm-loan"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "33"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21-o82n2FQbfZ5jcIIBGKAxsNlTwTk\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:32:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Prestamo confirmado\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Loan",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"loanId\": \"665faa4e4d6b5b369540269b\",\r\n    \"bookId\": \"6654287a799ca3d1720b7763\",\r\n    \"quantity\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/loan/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"loan",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update Loan",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"loanId\": \"665faa4e4d6b5b369540269b\",\r\n    \"bookId\": \"6654287a799ca3d1720b7763\",\r\n    \"quantity\": 5\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/loan/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"loan",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:04:51 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "230"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebe8582acd9c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"137-yPC9xM93UqP//6C55XXugoyGV+o\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "878f30dc-67ef-431f"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Prestamo actualizado\",\n    \"data\": {\n        \"_id\": \"665faa4e4d6b5b369540269b\",\n        \"books\": [\n            {\n                \"book\": \"6654287a799ca3d1720b7763\",\n                \"quantity\": 10,\n                \"_id\": \"665faa4e4d6b5b369540269c\"\n            }\n        ],\n        \"user\": \"665fa9674d6b5b3695402695\",\n        \"status\": \"PREPARING\",\n        \"startDate\": \"2024-06-04T23:59:10.694Z\",\n        \"expireTime\": \"2024-06-18T23:59:00.000Z\",\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\",\r\n    \"bookId\": \"66543015cb820e0ffd6c4b52\",\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/create-purchase-order",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"create-purchase-order"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\",\r\n    \"bookId\": \"6654287a799ca3d1720b7763\",\r\n    \"quantity\": 10\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/create-purchase-order",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"create-purchase-order"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:03:48 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "173"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ebe6cebb729c0e-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d2-iwdErviLIDNbDFPtyrkK/9qHD/k\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "502ca491-746c-443e"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"books\": [\n            {\n                \"book\": \"6654287a799ca3d1720b7763\",\n                \"quantity\": 10,\n                \"_id\": \"665fab63b57b33335d6224f3\"\n            }\n        ],\n        \"user\": \"665fa9674d6b5b3695402695\",\n        \"status\": \"PREPARING\",\n        \"_id\": \"665fab63b57b33335d6224f2\",\n        \"__v\": 0\n    },\n    \"error\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Confirm Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/confirm-purchase-order",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"confirm-purchase-order"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Confirm Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": \"665fa9674d6b5b3695402695\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/confirm-purchase-order",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"confirm-purchase-order"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-GC607BKdYVpQOnubLnVLxtkmVhw\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:28:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Compra confirmada\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Borrowed Books",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/loan/:id/borrowed-books",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"loan",
+										":id",
+										"borrowed-books"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "665faa4e4d6b5b369540269b"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Borrowed Books",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/loan/:id/borrowed-books",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"loan",
+												":id",
+												"borrowed-books"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "665faa4e4d6b5b369540269b"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "488"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1e8-vwQQ3t7Ea/bg1e6pn5OmWvjhnbk\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:15:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"_id\": \"665faa4e4d6b5b369540269b\",\n        \"books\": [\n            {\n                \"book\": {\n                    \"_id\": \"6654287a799ca3d1720b7763\",\n                    \"isbn\": 9780679603126,\n                    \"title\": \"War and Peace\",\n                    \"author\": \"Leo Tolstoy\",\n                    \"price\": 4500,\n                    \"stock\": 10,\n                    \"editorial\": \"The Russian Messenger\",\n                    \"activeLoans\": [],\n                    \"loanHistory\": [],\n                    \"purchaseHistory\": [],\n                    \"__v\": 0\n                },\n                \"quantity\": 10,\n                \"_id\": \"665faa4e4d6b5b369540269c\"\n            }\n        ],\n        \"user\": \"665fa9674d6b5b3695402695\",\n        \"status\": \"PREPARING\",\n        \"startDate\": \"2024-06-04T23:59:10.694Z\",\n        \"expireTime\": \"2024-06-18T23:59:00.000Z\",\n        \"__v\": 0\n    },\n    \"error\": []\n}"
+								}
+							]
+						},
+						{
+							"name": "Return Book",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"loanId\": \"665faa4e4d6b5b369540269b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/loan/return-book",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"loan",
+										"return-book"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Return Book",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"loanId\": \"665faa4e4d6b5b369540269b\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/loan/return-book",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"loan",
+												"return-book"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "59"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3b-OQnEpph4/36lELrjU4acCHYqBGc\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:12:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Se devolvio correctamente el libro\",\n    \"error\": []\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Books",
+					"item": [
+						{
+							"name": "Create Book",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isbn\": 9780605943117,\r\n    \"title\": \"harry potter and the cursed child: parts one and two\",\r\n    \"author\": \"Jack Thorne\",\r\n    \"price\": 75000,\r\n    \"stock\": 20,\r\n    \"editorial\": \"Arthur A. Levine Books\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/book",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"book"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create Book",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"isbn\": 9780605943117,\r\n    \"title\": \"harry potter and the cursed child: parts one and two\",\r\n    \"author\": \"Jack Thorne\",\r\n    \"price\": 75000,\r\n    \"stock\": 20,\r\n    \"editorial\": \"Arthur A. Levine Books\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/book",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"book"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:44:25 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ec224f1c8b9c11-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1d-rYgQuPUW4aIQzPAFxaFXcvxqAN4\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "2712b8f3-3f2a-4f17"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"¡Libro Creado!\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Books",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/books",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Books",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/books",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"books"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:44:43 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "490"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ec22c16c8b9c11-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"411-sqjpXs3ZRZzmJS4xOn6LgH3pwCc\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "878cfa71-c516-4f58"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Lista de libros\",\n    \"libros\": [\n        {\n            \"_id\": \"6654287a799ca3d1720b7763\",\n            \"isbn\": 9780679603126,\n            \"title\": \"War and Peace\",\n            \"author\": \"Leo Tolstoy\",\n            \"price\": 4500,\n            \"stock\": 0,\n            \"editorial\": \"The Russian Messenger\",\n            \"activeLoans\": [],\n            \"loanHistory\": []\n        },\n        {\n            \"_id\": \"66542f650d48d7382c7eddeb\",\n            \"isbn\": 9780394823751,\n            \"title\": \"Crime and Punishment\",\n            \"author\": \"Fyodor Dostoevsky\",\n            \"price\": 4500,\n            \"stock\": 1,\n            \"editorial\": \"The Russian Messenger\",\n            \"activeLoans\": [],\n            \"loanHistory\": []\n        },\n        {\n            \"_id\": \"66543015cb820e0ffd6c4b52\",\n            \"isbn\": 9789877252439,\n            \"title\": \"Padre rico, padre pobre2\",\n            \"author\": \"Robert T. Kiyosaki\",\n            \"price\": 4500,\n            \"stock\": 7,\n            \"editorial\": \"Penguin Random House Grupo Editorial S.A.\",\n            \"activeLoans\": [],\n            \"loanHistory\": []\n        },\n        {\n            \"_id\": \"66553b12b12e904f681f695d\",\n            \"author\": \"Robert T. Kiyosakiv\",\n            \"price\": 5000,\n            \"stock\": 15,\n            \"activeLoans\": [],\n            \"loanHistory\": []\n        },\n        {\n            \"_id\": \"665fb4e99a987ba585edfab8\",\n            \"isbn\": 9780605943117,\n            \"title\": \"harry potter and the cursed child: parts one and two\",\n            \"author\": \"Jack Thorne\",\n            \"price\": 75000,\n            \"stock\": 20,\n            \"editorial\": \"Arthur A. Levine Books\",\n            \"activeLoans\": [],\n            \"loanHistory\": []\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Book Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/book/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"book",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "665fb4e99a987ba585edfab8"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Book Info",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/book/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"book",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "665fb4e99a987ba585edfab8"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:45:06 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "248"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ec234dead49c11-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"12f-OytsS7Iz29Wo4ajruuBxiAYnfCc\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "78102830-0998-4ae6"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Info del libro\",\n    \"libro\": {\n        \"_id\": \"665fb4e99a987ba585edfab8\",\n        \"isbn\": 9780605943117,\n        \"title\": \"harry potter and the cursed child: parts one and two\",\n        \"author\": \"Jack Thorne\",\n        \"price\": 75000,\n        \"stock\": 20,\n        \"editorial\": \"Arthur A. Levine Books\",\n        \"activeLoans\": [],\n        \"loanHistory\": [],\n        \"purchaseHistory\": [],\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Book",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isbn\": 9780605943117,\r\n    \"title\": \"harry potter and the cursed child: parts one and two\",\r\n    \"author\": \"Jack Thorne\",\r\n    \"price\": 70000,\r\n    \"stock\": 30,\r\n    \"editorial\": \"Arthur A. Levine Books\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/book/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"book",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "665fb4e99a987ba585edfab8"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update Book",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"isbn\": 9780605943117,\r\n    \"title\": \"harry potter and the cursed child: parts one and two\",\r\n    \"author\": \"Jack Thorne\",\r\n    \"price\": 70000,\r\n    \"stock\": 30,\r\n    \"editorial\": \"Arthur A. Levine Books\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/book/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"book",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "665fb4e99a987ba585edfab8"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:46:07 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "249"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ec24ce6f5a9c11-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"131-3LFc4l3sRjUHwh3u95efh0teX2M\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "d07a1a6d-ab67-4466"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Libro modificado\",\n    \"libro\": {\n        \"_id\": \"665fb4e99a987ba585edfab8\",\n        \"isbn\": 9780605943117,\n        \"title\": \"harry potter and the cursed child: parts one and two\",\n        \"author\": \"Jack Thorne\",\n        \"price\": 70000,\n        \"stock\": 30,\n        \"editorial\": \"Arthur A. Levine Books\",\n        \"activeLoans\": [],\n        \"loanHistory\": [],\n        \"purchaseHistory\": [],\n        \"__v\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Book",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://proyecto-final-back-adv.onrender.com/api/book/:id",
+									"protocol": "https",
+									"host": [
+										"proyecto-final-back-adv",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"book",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66553b12b12e904f681f695d"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete Book",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://proyecto-final-back-adv.onrender.com/api/book/:id",
+											"protocol": "https",
+											"host": [
+												"proyecto-final-back-adv",
+												"onrender",
+												"com"
+											],
+											"path": [
+												"api",
+												"book",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "66553b12b12e904f681f695d"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 05 Jun 2024 00:46:46 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "67"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "CF-Ray",
+											"value": "88ec25c058de9c11-EZE"
+										},
+										{
+											"key": "CF-Cache-Status",
+											"value": "DYNAMIC"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2b-Mc7HwLARHvJ1mgWSzFvU39T98Kg\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "rndr-id",
+											"value": "e7a02c45-ef2f-4a14"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "x-render-origin-server",
+											"value": "Render"
+										},
+										{
+											"key": "Server",
+											"value": "cloudflare"
+										},
+										{
+											"key": "alt-svc",
+											"value": "h3=\":443\"; ma=86400"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Libro eliminado correctamente\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
