@@ -1,7 +1,6 @@
 const Loan = require("../models/Loan");
 const mongoose = require("mongoose");
 const PurchaseOrder = require("../models/PurchaseOrder");
-const Book = require("../models/Book");
 
 const createLoan = async (req, res, next) => {
   try {
@@ -17,29 +16,6 @@ const createLoan = async (req, res, next) => {
     res.status(201).json({ data: loan, error: [] });
   } catch (err) {
     next(err);
-  }
-};
-
-const createBook = async (req, res, next) => {
-  try {
-    const { name, author, stock, price } = req.body;
-
-    const book = new Book({ name, author, stock, price });
-    await book.save();
-
-    res.status(201).json({ data: book, error: [] });
-  } catch (err) {
-    next(err);
-  }
-};
-
-const getBooks = async (req, res) => {
-  try {
-    const books = await Book.find();
-    res.status(200).json({ message: "Lista de libros", data: books });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error al obtener los libros" });
   }
 };
 
@@ -87,14 +63,14 @@ const updateLoan = async (req, res, next) => {
 
 const borrowedBooks = async (req, res, next) => {
   try {
-    const { loanId } = req.body;
+    const loanId = req.params.id;
 
     const book = await Loan.findById(loanId).populate("books.book");
     if (!book) {
       return res.status(404).json({ message: "Libro no encontrado" });
     }
 
-    res.status(201).json({ data: book, error: [] });
+    res.status(200).json({ data: book, error: [] });
   } catch (err) {
     next(err);
   }
@@ -144,7 +120,7 @@ const confirmPurchaseOrder = async (req, res, next) => {
       const quantity = item.quantity;
 
       if (book.stock < quantity) {
-        throw new Error(`No hay suficiente stock para ${book.name}`);
+        res.json({ message: `No hay suficiente stock para ${book.name}`});
       }
 
       book.stock -= quantity;
@@ -155,18 +131,18 @@ const confirmPurchaseOrder = async (req, res, next) => {
     order.status = "BUYED";
     await order.save();
 
-    if (req.query.cancel === "YES") throw new Error("Cancel transaction");
+    if (req.query.cancel === "YES")  res.json({ message: `Transaccion cancelada`});
 
     await session.commitTransaction();
     session.endSession();
 
-    res.json(Loan);
+    res.json({ message: "Compra confirmada" } );
   } catch (error) {
     next(error);
     await session.abortTransaction();
     session.endSession();
 
-    res.json({ message: error.message });
+    res.json({ message: "No se pudo confirmar la compra" ,error: error.message });
   }
 };
 
@@ -185,7 +161,7 @@ const confirmLoan = async (req, res, next) => {
       const quantity = item.quantity;
 
       if (book.stock < quantity) {
-        throw new Error(`No hay suficiente stock para ${book.name}`);
+        res.json({ message: `No hay suficiente stock para ${book.name}`});
       }
 
       book.stock -= quantity;
@@ -196,26 +172,24 @@ const confirmLoan = async (req, res, next) => {
     loan.status = "CONFIRMED";
     await loan.save();
 
-    if (req.query.cancel === "YES") throw new Error("Cancel transaction");
+    if (req.query.cancel === "YES") res.json({ message: `Transaccion cancelada`});
 
     await session.commitTransaction();
     session.endSession();
 
-    res.json(Loan);
+    res.json({ message: "Prestamo confirmado" } );
   } catch (error) {
     next(error);
     await session.abortTransaction();
     session.endSession();
 
-    res.json({ message: error.message });
+    res.json({ message: "No se pudo confirmar el prestamo" ,error: error.message });
   }
 };
 
 module.exports = {
   createLoan,
-  createBook,
   getLoans,
-  getBooks,
   updateLoan,
   createPurchaseOrder,
   confirmPurchaseOrder,
